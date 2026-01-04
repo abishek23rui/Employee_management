@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.h1 {
+  @apply text-[24px] font-light leading-[36px] md:text-[28px] md:leading-[42px] lg:text-[32px] lg:leading-[48px];
+}
+.h2 {
+  @apply text-[24px] font-semibold leading-[36px] md:text-[26px] md:leading-[39px] lg:text-[28px] lg:leading-[42px];
+}
+.h3 {
+  @apply text-[20px] font-normal leading-[30px] md:text-[22px] md:leading-[33px] lg:text-[24px] lg:leading-[36px];
+}
+.h4 {
+  @apply text-[18px] font-medium leading-[27px] md:text-[19px] md:leading-[28px] lg:text-[20px] lg:leading-[30px];
+}
+.h5 {
+  @apply text-[16px] font-medium leading-[24px] md:text-[17px] md:leading-[26px] lg:text-[18px] lg:leading-[29px];
+}
+.h6 {
+  @apply text-[14px] font-medium leading-[21px] md:text-[15px] md:leading-[23px] lg:text-[16px] lg:leading-[24px];
+}
+
+.s1 {
+  @apply text-[14px] font-bold leading-[21px] md:text-[15px] md:leading-[23px] lg:text-[16px] lg:leading-[24px];
+}
+.s2 {
+  @apply text-[12px] font-semibold leading-[18px] md:text-[13px] md:leading-[20px] lg:text-[14px] lg:leading-[22px];
+}
+
+.btn {
+  @apply text-[14px] font-semibold leading-[21px] md:text-[15px] md:leading-[23px] lg:text-[16px] lg:leading-[24px];
+}
+.lnk {
+  @apply text-[14px] font-medium leading-[21px] underline md:text-[15px] md:leading-[23px] lg:text-[16px] lg:leading-[24px];
+}
+
+.b1 {
+  @apply text-[14px] font-normal leading-[21px] md:text-[15px] md:leading-[23px] lg:text-[16px] lg:leading-[24px];
+}
+.b2 {
+  @apply text-[12px] font-normal leading-[18px] md:text-[13px] md:leading-[20px] lg:text-[14px] lg:leading-[22px];
+}
+
+.c1 {
+  @apply text-[13px] font-bold leading-[16px] md:text-[14px] md:leading-[17px] lg:text-[15px] lg:leading-[18px];
+}
+.c2 {
+  @apply text-[14px] font-normal leading-[16px] md:text-[15px] md:leading-[17px] lg:text-[16px] lg:leading-[18px];
+}
+.c3 {
+  @apply text-[8px] font-normal leading-[14px] md:text-[9px] md:leading-[16px] lg:text-[10px] lg:leading-[18px];
+}
+.c4 {
+  @apply text-[7px] font-medium leading-[12px] md:text-[8px] md:leading-[13px] lg:text-[9px] lg:leading-[14px];
+}
+
+.n-900 {
+  color: #141414;
+}
+.n-800 {
+  color: #343434;
+}
+.n-700 {
+  color: #525252;
+}
+.n-600 {
+  color: #656565;
+}
+.n-500 {
+  color: #8c8c8c;
+}
+.n-400 {
+  color: #adadad;
+}
+.n-300 {
+  color: #d2d2d2;
+}
+.n-200 {
+  color: #e3e3e3;
+}
+.n-100 {
+  color: #efefef;
+}
+
+.bg-900 {
+  background-color: #141414;
+}
+.bg-800 {
+  background-color: #343434;
+}
+.bg-700 {
+  background-color: #525252;
+}
+.bg-600 {
+  background-color: #656565;
+}
+.bg-500 {
+  background-color: #8c8c8c;
+}
+.bg-400 {
+  background-color: #adadad;
+}
+.bg-300 {
+  background-color: #d2d2d2;
+}
+.bg-200 {
+  background-color: #e3e3e3;
+}
+.bg-100 {
+  background-color: #efefef;
+}

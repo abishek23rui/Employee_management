@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #155dfc;
+  --secondary-color: #ff5c39;
+  --light-primary-color: #25328e;
+  --light-gray-color: #d2d2d2;
+  --red-color: #e32929;
+  --background-color: #f0f0f0;
+
+  --success-color: #11b456;
+  --warning-color: #ee9800;
+  --info-color: #0e89e4;
+  --input-background: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.ui-divider {
+  border-bottom: 1px solid var(--gray-color);
+}
+
+html,
+body,
+.app,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.hide-scrollbar {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0 !important; /* Chrome, Safari, Opera */
+}
+div > iframe[id^="gsi_"] {
+  height: 48px !important;
+  border-radius: 6px !important;
+}
+
+.required-star {
+  color: red;
+  margin-left: 2px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-in-out;
+}
+.milk-tabs-container {
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+/* Debug: Tailwind test rule - will be used to verify Tailwind processing */
+@layer utilities {
+  .debug-test {
+    background-color: #10b981;
+    color: #fff;
+    padding: .375rem .75rem;
+    border-radius: .375rem;
+    display: inline-block;
+  }
+}
+
+.hubmilk-tabs-container {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.milk-tabs-container .tabs-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  padding-bottom: 6px;
+}
+.hubmilk-tabs-container .tabs-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  padding-bottom: 6px;
+}
+.purchase-list-container {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
