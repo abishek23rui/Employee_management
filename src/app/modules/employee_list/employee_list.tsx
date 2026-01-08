@@ -87,7 +87,6 @@ function EmployeeList() {
     updateLocalStorage(rows.filter((r: any) => r.id !== id));
 
   const handleEdit = (row: any) => {
-    console.log("Editing row:", row);
     setEditRow(row);
     setOpenForm(true);
   };
@@ -112,22 +111,22 @@ function EmployeeList() {
   };
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 80 },
+    { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "profileImage",
       headerName: "Profile",
-      width: 90,
+      flex: 0.7,
       sortable: false,
       renderCell: (params) => <Avatar src={params.value} alt="profile" />,
     },
     { field: "name", headerName: "Name", flex: 1 },
-    { field: "gender", headerName: "Gender", width: 120 },
+    { field: "gender", headerName: "Gender", flex: 0.8 },
     { field: "state", headerName: "State", flex: 1 },
-    { field: "dob", headerName: "DOB", width: 140 },
+    { field: "dob", headerName: "DOB", flex: 0.9 },
     {
       field: "active",
       headerName: "Status",
-      width: 140,
+      flex: 0.8,
       sortable: false,
       renderCell: (params) => (
         <Switch
@@ -139,7 +138,7 @@ function EmployeeList() {
     {
       field: "actions",
       headerName: "Actions",
-      width: 170,
+      flex: 1,
       sortable: false,
       renderCell: (params) => (
         <div className="flex gap-2">
@@ -173,7 +172,7 @@ function EmployeeList() {
           className="border rounded px-3 py-2 mr-3 w-64"
         />
 
-        <div className="flex justify-end mb-3">
+        <div className="flex justify-end mt-3 mb-3">
           <Tooltip title="Create new employee">
             <button
               onClick={() => {
@@ -199,19 +198,135 @@ function EmployeeList() {
         </div>
 
         {/* 👇 horizontal scroll on mobile */}
-        <div className="overflow-x-auto">
-          <div className="min-w-[800px]">
-            <DataGrid
-              rows={filteredRows}
-              columns={columns}
-              autoHeight
-              pageSizeOptions={[5, 10]}
-              initialState={{
-                pagination: { paginationModel: { pageSize: 5 } },
-              }}
-              disableRowSelectionOnClick
-            />
+        {/* Responsive Table/Card Layout */}
+        <div className="border rounded-lg overflow-hidden">
+          {/* Header - Hidden on mobile */}
+          <div className="hidden md:grid md:grid-cols-12 bg-gray-50 border-b font-semibold text-sm">
+            <div className="col-span-1 px-4 py-3">ID</div>
+            <div className="col-span-3 px-4 py-3">Employee</div>
+            <div className="col-span-2 px-4 py-3">Gender</div>
+            <div className="col-span-2 px-4 py-3">State</div>
+            <div className="col-span-2 px-4 py-3">DOB</div>
+            <div className="col-span-1 px-4 py-3 text-center">Status</div>
+            <div className="col-span-1 px-4 py-3 text-center">Actions</div>
           </div>
+
+          {/* Rows */}
+          {filteredRows.length === 0 ? (
+            <div className="text-center py-8 text-gray-400">
+              No employees found
+            </div>
+          ) : (
+            filteredRows.map((row: any) => (
+              <div
+                key={row.id}
+                className="border-b last:border-b-0 hover:bg-gray-50"
+              >
+                {/* Desktop Layout */}
+                <div className="hidden md:grid md:grid-cols-12 items-center py-3">
+                  <div className="col-span-1 px-4">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">
+                      {row.id}
+                    </span>
+                  </div>
+
+                  <div className="col-span-3 px-4">
+                    <div className="flex items-center gap-3">
+                      <Avatar
+                        src={row.profileImage}
+                        sx={{ width: 36, height: 36 }}
+                      />
+                      <span className="font-medium">{row.name}</span>
+                    </div>
+                  </div>
+
+                  <div className="col-span-2 px-4">{row.gender}</div>
+                  <div className="col-span-2 px-4">{row.state}</div>
+                  <div className="col-span-2 px-4">{row.dob}</div>
+
+                  <div className="col-span-1 px-4 flex justify-center">
+                    <Switch
+                      checked={row.active}
+                      onChange={() => handleToggle(row.id)}
+                      size="small"
+                    />
+                  </div>
+
+                  <div className="col-span-1 px-4 flex justify-center gap-2">
+                    <button
+                      onClick={() => handleEdit(row)}
+                      className="p-1 rounded hover:bg-blue-50"
+                    >
+                      <Edit className="w-4 h-4 text-blue-500" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(row.id)}
+                      className="p-1 rounded hover:bg-red-50"
+                    >
+                      <Trash2 className="w-4 h-4 text-red-500" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Mobile Card Layout */}
+                <div className="md:hidden p-4 space-y-3">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-3">
+                      <Avatar
+                        src={row.profileImage}
+                        sx={{ width: 48, height: 48 }}
+                      />
+                      <div>
+                        <div className="font-semibold text-base">
+                          {row.name}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          ID: {row.id}
+                        </div>
+                      </div>
+                    </div>
+                    <Switch
+                      checked={row.active}
+                      onChange={() => handleToggle(row.id)}
+                      size="small"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div>
+                      <span className="text-gray-500">Gender:</span>
+                      <span className="ml-2 font-medium">{row.gender}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">State:</span>
+                      <span className="ml-2 font-medium">{row.state}</span>
+                    </div>
+                    <div className="col-span-2">
+                      <span className="text-gray-500">DOB:</span>
+                      <span className="ml-2 font-medium">{row.dob}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 pt-2 border-t">
+                    <button
+                      onClick={() => handleEdit(row)}
+                      className="flex-1 px-3 py-2 border rounded hover:bg-blue-50 flex items-center justify-center gap-2 text-blue-600"
+                    >
+                      <Edit className="w-4 h-4" />
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(row.id)}
+                      className="flex-1 px-3 py-2 border rounded hover:bg-red-50 flex items-center justify-center gap-2 text-red-600"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
 
