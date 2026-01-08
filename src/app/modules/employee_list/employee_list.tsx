@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { Avatar, Switch, Tooltip } from "@mui/material";
 import { Edit, Trash2, Printer, Plus } from "lucide-react";
 import AddEmployeeForm from "./add_employee";
@@ -109,56 +108,6 @@ function EmployeeList() {
     setOpenForm(false);
     setEditRow(null); // Reset editRow when closing
   };
-
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    {
-      field: "profileImage",
-      headerName: "Profile",
-      flex: 0.7,
-      sortable: false,
-      renderCell: (params) => <Avatar src={params.value} alt="profile" />,
-    },
-    { field: "name", headerName: "Name", flex: 1 },
-    { field: "gender", headerName: "Gender", flex: 0.8 },
-    { field: "state", headerName: "State", flex: 1 },
-    { field: "dob", headerName: "DOB", flex: 0.9 },
-    {
-      field: "active",
-      headerName: "Status",
-      flex: 0.8,
-      sortable: false,
-      renderCell: (params) => (
-        <Switch
-          checked={params.row.active}
-          onChange={() => handleToggle(params.row.id)}
-        />
-      ),
-    },
-    {
-      field: "actions",
-      headerName: "Actions",
-      flex: 1,
-      sortable: false,
-      renderCell: (params) => (
-        <div className="flex gap-2">
-          <button
-            onClick={() => handleEdit(params.row)}
-            className="p-1 rounded hover:bg-gray-100"
-          >
-            <Edit className="w-5 h-5 text-blue-500" />
-          </button>
-
-          <button
-            onClick={() => handleDelete(params.row.id)}
-            className="p-1 rounded hover:bg-gray-100"
-          >
-            <Trash2 className="w-5 h-5 text-red-500" />
-          </button>
-        </div>
-      ),
-    },
-  ];
 
   return (
     <div className="p-4">
